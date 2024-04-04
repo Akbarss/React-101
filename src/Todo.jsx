@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import Modal from "./components/Modal";
 
 const Todo = () => {
   const [todos, setTodo] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [editindex, setEditindex] = useState(null);
   const [editValue, setEditValue] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   console.log(useState(1));
 
@@ -40,26 +40,9 @@ const Todo = () => {
 
   return (
     <>
-      <input type="text" value={inputValue} onChange={handleInputChage} placeholder="Add Todo" />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index} style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
-            {editindex === index ? (
-              <div>
-                <input type="text" value={editValue} onChange={(e) => setEditValue(e.target.value)} />
-                <button onClick={() => handleSaveEdit(index)}>Save</button>
-              </div>
-            ) : (
-              <div>
-                <span onClick={() => handleChange(index)}>{todo.task}</span>
-                <button onClick={() => handleDeleteTodo(index)}>Delete</button>
-                <button onClick={() => handleEditTodo(index)}>Edit</button>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
+      <Modal>
+        <h1>Hello</h1>
+      </Modal>
     </>
   );
 };
