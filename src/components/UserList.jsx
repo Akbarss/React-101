@@ -5,6 +5,16 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, 1000);
+
+    return () => clearInterval(interval); // очистка ресурсов при размонтировании компонента
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,6 +32,7 @@ const UserList = () => {
 
   return (
     <div>
+      <h1>Count {count}</h1>
       <h2>User List</h2>
       {loading ? (
         <p>Loading...</p>
